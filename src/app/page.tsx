@@ -9,7 +9,7 @@ import Category from "@/components/dashboard/category";
 export default function Home() {
   return (
     <div className="m-10">
-      <div className="flex gap-10">
+      <div className="flex md:flex-row md:gap-10 flex-col items-center  space-y-4 md:space-y-0 ">
 
         <Card
           title="Files"
@@ -30,7 +30,7 @@ export default function Home() {
           children={<TiCloudStorageOutline className="text-6xl" />}
         ></Card>
       </div>
-      <div className="grid grid-cols-3 mt-20 ">
+      <div className="grid md:grid-cols-3 mt-20 ">
         <RecentTable />
         <Category />
       </div>

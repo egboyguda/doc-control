@@ -1,6 +1,6 @@
 export default function Category() {
     return (
-        <div className="overflow-x-auto space-y-1 p-2">
+        <div className="overflow-x-auto space-y-1 p-2 ">
             <h1 className="font-bold">Category</h1>
             <table className="table border rounded ">
                 {/* head */}
