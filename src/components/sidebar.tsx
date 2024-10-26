@@ -1,6 +1,7 @@
 import { LuHome } from "react-icons/lu";
 import Header from "./header";
 import { GrDocumentText } from "react-icons/gr"
+import Link from "next/link";
 
 //use to get a component
 //props
@@ -28,10 +29,10 @@ export default function Sidebar({ children }: SidebarProps) {
 
 
 
-                    <li className="text-lg"> <a><span><LuHome /></span> Dashboard</a></li>
-                    <li className="text-lg"><a><span><GrDocumentText /></span> Documents</a></li>
+                    <li className="text-lg"> <Link href="/"><span><LuHome /></span> Dashboard</Link></li>
+                    <li className="text-lg"><Link href="/documents"><span><GrDocumentText /></span> Documents</Link></li>
                 </ul>
             </div>
-        </div>
+        </div >
     )
 }
