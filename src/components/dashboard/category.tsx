@@ -1,4 +1,15 @@
-export default function Category() {
+import { db } from "@/db"
+
+export default async function Category() {
+    const category = await db.category.findMany()
+    const renderCategory = category.map((category, index) => {
+        return (
+            <tr>
+                <th>{index + 1}</th>
+                <td>{category.name}</td>
+            </tr>
+        )
+    })
     return (
         <div className="overflow-x-auto space-y-1 p-2 ">
             <h1 className="font-bold">Category</h1>
@@ -12,24 +23,7 @@ export default function Category() {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* row 1 */}
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-
-                    </tr>
-                    {/* row 2 */}
-                    <tr className="hover">
-                        <th>2</th>
-                        <td>Hart Hagerty</td>
-
-                    </tr>
-                    {/* row 3 */}
-                    <tr>
-                        <th>3</th>
-                        <td>Brice Swyre</td>
-
-                    </tr>
+                    {renderCategory}
                 </tbody>
             </table>
         </div>

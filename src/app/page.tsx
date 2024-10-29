@@ -5,11 +5,16 @@ import { BiCabinet } from "react-icons/bi";
 import { TiCloudStorageOutline } from "react-icons/ti";
 import RecentTable from "@/components/dashboard/table-recent";
 import Category from "@/components/dashboard/category";
+import Modal from "@/components/dashboard/modal";
+import DocsModal from "@/components/dashboard/docsModal";
+import { db } from "@/db";
 
-export default function Home() {
+
+export default async function Home() {
+  const category = await db.category.findMany()
   return (
     <div className="m-10">
-      <div className="flex md:flex-row md:gap-10 flex-col items-center  space-y-4 md:space-y-0 ">
+      <div className="flex md:flex-row md:gap-10 flex-col items-center  space-y-4 md:space-y-0 mb-4  ">
 
         <Card
           title="Files"
@@ -29,6 +34,10 @@ export default function Home() {
           bgColor="bg-[#73EC8B]"
           children={<TiCloudStorageOutline className="text-6xl" />}
         ></Card>
+      </div>
+      <div className="">
+        <Modal />
+        <DocsModal category={category} />
       </div>
       <div className="grid md:grid-cols-3 mt-20 ">
         <RecentTable />

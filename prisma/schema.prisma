@@ -16,20 +16,20 @@ datasource db {
 }
 
 model Document {
-  id        Int       @id @default(autoincrement())
-  name      String
-  url       String
-  date      DateTime  @default(now())
-  category  Category  @relation(fields: [categoryId], references: [id])
-  categoryId Int
+  id         String     @id @default(uuid())  // Changed to String with UUID default
+  name       String
+  url        String
+  date       DateTime   @default(now())
+  category   Category   @relation(fields: [categoryId], references: [id])
+  categoryId String
 
   @@index([name], name: "document_name_index")  // Optional: Index for quick searching by name
 }
 
 model Category {
-  id        Int         @id @default(autoincrement())
-  name      String      @unique
-  documents Document[]
+  id         String      @id @default(uuid())  // Changed to String with UUID default
+  name       String      @unique
+  documents  Document[]
 
   @@index([name], name: "category_name_index")  // Optional: Index for quick searching by category name
 }

@@ -1,6 +1,7 @@
 import { LuHome } from "react-icons/lu";
 import Header from "./header";
 import { GrDocumentText } from "react-icons/gr"
+import { FaFileUpload } from "react-icons/fa";
 import Link from "next/link";
 
 //use to get a component
@@ -31,6 +32,7 @@ export default function Sidebar({ children }: SidebarProps) {
 
                     <li className="text-lg"> <Link href="/"><span><LuHome /></span> Dashboard</Link></li>
                     <li className="text-lg"><Link href="/documents"><span><GrDocumentText /></span> Documents</Link></li>
+                    <li className="text-lg"><Link href="/documents/upload"><span><FaFileUpload /></span> Upload</Link></li>
                 </ul>
             </div>
         </div >
