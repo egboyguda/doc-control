@@ -1,6 +1,42 @@
+import { db } from "@/db";
 import { MdVisibility, MdEdit, MdDelete } from "react-icons/md";
-export default function DocsTable() {
+import ViewModal from "./view-modal";
+export default async function DocsTable() {
+    const doc = await db.document.findMany({
+        take: 5,
+        orderBy: {
+            date: "desc",
+        },
+        include: {
+            category: true,
+        },
+    })
+
+    const renderDoc = doc.map((doc, index) => {
+        return (
+            <tr>
+                <th>{index + 1}</th>
+                <td>{doc.name}</td>
+                <td>{doc.category.name}</td>
+                <td>{ }</td>
+
+                <td className="flex gap-2">
+                    {/* Icons for view, edit, and delete with colors */}
+
+                    <ViewModal pdfUrl={doc.url} />
+                    <a href="#" title="Edit" className="tooltip" data-tip="Edit">
+                        <MdEdit size={20} color="green" />
+                    </a>
+                    <a href="#" title="Delete" className="tooltip" data-tip="Delete">
+                        <MdDelete size={20} color="red" />
+                    </a>
+                </td>
+
+            </tr>
+        )
+    })
     return (
+
         <div className="overflow-x-auto p-2 col-span-2 space-y-1">
             <h1 className="font-bold">Recent Added Files </h1>
             <table className="table border rounded ">
@@ -17,65 +53,8 @@ export default function DocsTable() {
                 </thead>
                 <tbody>
                     {/* row 1 */}
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>2022-01-01</td>
-                        <td className="flex gap-2">
-                            {/* Icons for view, edit, and delete with colors */}
-                            <a href="#" title="View" className="tooltip" data-tip="View">
-                                <MdVisibility size={20} color="blue" />
-                            </a>
-                            <a href="#" title="Edit" className="tooltip" data-tip="Edit">
-                                <MdEdit size={20} color="green" />
-                            </a>
-                            <a href="#" title="Delete" className="tooltip" data-tip="Delete">
-                                <MdDelete size={20} color="red" />
-                            </a>
-                        </td>
 
-                    </tr>
-                    {/* row 2 */}
-                    <tr className="hover">
-                        <th>2</th>
-                        <td>Hart Hagerty</td>
-                        <td>Desktop Support Technician</td>
-                        <td>2022-01-01</td>
-                        <td className="flex gap-2">
-                            {/* Icons for view, edit, and delete with colors */}
-                            <a href="#" title="View" className="tooltip" data-tip="View">
-                                <MdVisibility size={20} color="blue" />
-                            </a>
-                            <a href="#" title="Edit" className="tooltip" data-tip="Edit">
-                                <MdEdit size={20} color="green" />
-                            </a>
-                            <a href="#" title="Delete" className="tooltip" data-tip="Delete">
-                                <MdDelete size={20} color="red" />
-                            </a>
-                        </td>
-
-                    </tr>
-                    {/* row 3 */}
-                    <tr>
-                        <th>3</th>
-                        <td>Brice Swyre</td>
-                        <td>Tax Accountant</td>
-                        <td>2022-01-01</td>
-                        <td className="flex gap-2">
-                            {/* Icons for view, edit, and delete with colors */}
-                            <a href="#" title="View" className="tooltip" data-tip="View">
-                                <MdVisibility size={20} color="blue" />
-                            </a>
-                            <a href="#" title="Edit" className="tooltip" data-tip="Edit">
-                                <MdEdit size={20} color="green" />
-                            </a>
-                            <a href="#" title="Delete" className="tooltip" data-tip="Delete">
-                                <MdDelete size={20} color="red" />
-                            </a>
-                        </td>
-
-                    </tr>
+                    {renderDoc}
                 </tbody>
             </table>
         </div>

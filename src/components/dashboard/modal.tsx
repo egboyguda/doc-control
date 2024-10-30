@@ -18,6 +18,7 @@ export default function Modal() {
             <Dialog>
                 <DialogTrigger>Make a Category</DialogTrigger>
                 <DialogContent>
+
                     <DialogHeader>
                         <DialogTitle>Add A Category</DialogTitle>
 

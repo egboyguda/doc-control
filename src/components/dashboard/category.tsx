@@ -1,7 +1,10 @@
 import { db } from "@/db"
+import type { Category } from "@prisma/client"
+interface CategoryProps {
+    category: Category[];
+}
+export default async function Category({ category }: CategoryProps) {
 
-export default async function Category() {
-    const category = await db.category.findMany()
     const renderCategory = category.map((category, index) => {
         return (
             <tr>
