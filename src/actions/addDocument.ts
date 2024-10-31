@@ -35,7 +35,7 @@ export async function createDocument(
     const result = createDocumentSchema.safeParse({
       name: formDate.get("name"),
       file: formDate.get("file") as File,
-      caches: formDate.get("caches"),
+
       category: formDate.get("category"),
     });
     if (!result.success) {
@@ -73,6 +73,7 @@ export async function createDocument(
                 data: {
                   name: result.data.name,
                   url: res.secure_url,
+                  public_id: res.public_id,
                   category: {
                     connect: { id: category.id },
                   },
@@ -82,6 +83,7 @@ export async function createDocument(
               if (!doc) {
                 return new Error("Document not found");
               }
+              console.log(res);
               resolve(res);
             }
           })

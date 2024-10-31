@@ -19,10 +19,11 @@ model Document {
   id         String     @id @default(uuid())  // Changed to String with UUID default
   name       String
   url        String
+  public_id  String     
   date       DateTime   @default(now())
   category   Category   @relation(fields: [categoryId], references: [id])
   categoryId String
-
+ 
   @@index([name], name: "document_name_index")  // Optional: Index for quick searching by name
 }
 
