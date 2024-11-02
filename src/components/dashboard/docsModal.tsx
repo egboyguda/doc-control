@@ -7,6 +7,7 @@ import Select from "../select";
 import { useActionState } from "react";
 import { createDocument } from "@/actions";
 import type { Category } from "@prisma/client";
+import FormBtn from "../component/loadingBtn";
 
 
 
@@ -40,7 +41,7 @@ export default function DocsModal({ category }: DocsModalProps) {
                                     <option disabled  >Pick your favorite Simpson</option>
                                     {renderCategoryOptions}
                                 </select>
-                                <button type="submit">Upload</button>
+                                <FormBtn >Upload</FormBtn>
 
                             </div>
                             {formState.errors.name && <p className="text-red-500 text-sm">{formState.errors.name[0]}</p>}

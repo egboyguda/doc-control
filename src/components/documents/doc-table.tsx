@@ -1,6 +1,8 @@
 import { db } from "@/db";
 import { MdVisibility, MdEdit, MdDelete } from "react-icons/md";
 import ViewModal from "./view-modal";
+import { deleteDocs } from "@/actions";
+import FormBtn from "../component/loadingBtn";
 export default async function DocsTable() {
     const doc = await db.document.findMany({
         take: 5,
@@ -13,6 +15,7 @@ export default async function DocsTable() {
     })
 
     const renderDoc = doc.map((doc, index) => {
+        const delDoc = deleteDocs.bind(null, doc.id);
         return (
             <tr>
                 <th>{index + 1}</th>
@@ -27,12 +30,12 @@ export default async function DocsTable() {
                     <a href="#" title="Edit" className="tooltip" data-tip="Edit">
                         <MdEdit size={20} color="green" />
                     </a>
-                    <a href="#" title="Delete" className="tooltip" data-tip="Delete">
-                        <MdDelete size={20} color="red" />
-                    </a>
+                    <form action={delDoc}>
+                        <FormBtn ><MdDelete size={20} color="red" /></FormBtn>
+                    </form>
                 </td>
 
-            </tr>
+            </tr >
         )
     })
     return (

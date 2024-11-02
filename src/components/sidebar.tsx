@@ -3,6 +3,7 @@ import Header from "./header";
 import { GrDocumentText } from "react-icons/gr"
 import { FaFileUpload } from "react-icons/fa";
 import Link from "next/link";
+import { SignIn } from "@clerk/nextjs";
 
 //use to get a component
 //props
@@ -16,6 +17,7 @@ export default function Sidebar({ children }: SidebarProps) {
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content ">
                 <Header />
+
                 {children}
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">
                     Open drawer
