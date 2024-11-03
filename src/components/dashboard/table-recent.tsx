@@ -15,7 +15,7 @@ export default async function RecentTable() {
 
     const renderRecent = recent.map((recent, index) => {
         return (
-            <tr>
+            <tr key={recent.id}>
                 <th>{index + 1}</th>
                 <td>{recent.name}</td>
                 <td>{recent.category.name}</td>

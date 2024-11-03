@@ -1,4 +1,4 @@
-import RecentTable from "@/components/dashboard/table-recent";
+
 import DocsTable from "@/components/documents/doc-table";
 
 export default function DocumentPage() {

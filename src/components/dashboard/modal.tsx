@@ -16,7 +16,7 @@ export default function Modal() {
     return (
         <div>
             <Dialog>
-                <DialogTrigger>Make a Category</DialogTrigger>
+                <DialogTrigger className="bg-pink-500 p-2 rounded-md text-white hover:bg-pink-200">Add A Category</DialogTrigger>
                 <DialogContent>
 
                     <DialogHeader>
@@ -27,9 +27,9 @@ export default function Modal() {
                         </DialogDescription>
                     </DialogHeader>
                     <div>
-                        <form action={action}>
-                            <input type="text" placeholder="Category Name" name="name" />
-                            <button type="submit">Add</button>
+                        <form action={action} className="w-full flex flex-col gap-2">
+                            <input type="text" placeholder="Category Name" name="name" className=" input input-bordered" />
+                            <button type="submit" className="btn btn-primary ">Submit</button>
                             {formState.errors._form && <p className="text-red-500 text-sm">{formState.errors._form[0]}</p>}
                             {formState.errors.name && <p className="text-red-500 text-sm">{formState.errors.name[0]}</p>}
                         </form>

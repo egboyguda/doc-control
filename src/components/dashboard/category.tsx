@@ -1,4 +1,4 @@
-import { db } from "@/db"
+
 import type { Category } from "@prisma/client"
 interface CategoryProps {
     category: Category[];
@@ -7,7 +7,7 @@ export default async function Category({ category }: CategoryProps) {
 
     const renderCategory = category.map((category, index) => {
         return (
-            <tr>
+            <tr key={category.id}>
                 <th>{index + 1}</th>
                 <td>{category.name}</td>
             </tr>

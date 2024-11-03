@@ -3,7 +3,6 @@
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger, DialogHeader } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import Select from "../select";
 import { useActionState } from "react";
 import { createDocument } from "@/actions";
 import type { Category } from "@prisma/client";
@@ -25,23 +24,26 @@ export default function DocsModal({ category }: DocsModalProps) {
     return (
         <div>
             <Dialog>
-                <DialogTrigger>Upload a Document</DialogTrigger>
+                <DialogTrigger className="bg-[#7E60BF] p-2 rounded-md text-white hover:bg-violet-400">Upload a Document</DialogTrigger>
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>Upload a Document</DialogTitle>
                         <DialogDescription>Upload your Document to the CLOUD </DialogDescription>
                     </DialogHeader>
                     <div>
-                        <form action={action} >
+                        <form action={action} className="gap-4 w-full flex flex-col" >
                             <input type="text" placeholder="name" name="name" className="input input-bordered" />
-                            <div className="grid w-full max-w-sm items-center gap-1.5">
-                                <Label htmlFor="picture">Picture</Label>
-                                <Input id="picture" type="file" name="file" />
-                                <select name="category" className="select w-full max-w-xs" defaultValue={""} >
-                                    <option disabled  >Pick your favorite Simpson</option>
-                                    {renderCategoryOptions}
-                                </select>
-                                <FormBtn >Upload</FormBtn>
+                            <div className="space-y-4 w-full">
+                                <div>                                <Label htmlFor="picture">Upload Your Document</Label>
+                                    <Input id="picture" type="file" name="file" className="input input-bordered w-full" /></div>
+                                <div>
+                                    <p>Select The Category</p>
+                                    <select name="category" className="select w-full max-w-xs" defaultValue={""} >
+                                        <option disabled  >Select your Category</option>
+                                        {renderCategoryOptions}
+                                    </select>
+                                </div>
+                                <FormBtn  >Upload</FormBtn>
 
                             </div>
                             {formState.errors.name && <p className="text-red-500 text-sm">{formState.errors.name[0]}</p>}

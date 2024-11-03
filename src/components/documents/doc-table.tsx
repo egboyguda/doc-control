@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import { MdVisibility, MdEdit, MdDelete } from "react-icons/md";
+import { MdEdit, MdDelete } from "react-icons/md";
 import ViewModal from "./view-modal";
 import { deleteDocs } from "@/actions";
 import FormBtn from "../component/loadingBtn";
@@ -17,7 +17,7 @@ export default async function DocsTable() {
     const renderDoc = doc.map((doc, index) => {
         const delDoc = deleteDocs.bind(null, doc.id);
         return (
-            <tr>
+            <tr key={doc.id}>
                 <th>{index + 1}</th>
                 <td>{doc.name}</td>
                 <td>{doc.category.name}</td>
