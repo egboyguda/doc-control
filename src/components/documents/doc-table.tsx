@@ -1,4 +1,4 @@
-import { db } from "@/db";
+
 import { MdEdit, MdDelete } from "react-icons/md";
 import ViewModal from "./view-modal";
 import { deleteDocs } from "@/actions";
