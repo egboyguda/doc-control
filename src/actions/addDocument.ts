@@ -9,8 +9,9 @@ const createDocumentSchema = z.object({
     .string()
     .min(2)
     .max(50)
-    .regex(/^[a-zA-Z0-9 ]+$/, {
-      message: "Only alphabets, numbers, and spaces are allowed",
+    .regex(/^[a-zA-Z0-9 _-]+$/, {
+      message:
+        "Only alphabets, numbers, spaces, underscores, and hyphens are allowed",
     }),
   category: z.string(),
   //file as a file

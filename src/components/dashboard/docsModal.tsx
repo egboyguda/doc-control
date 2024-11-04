@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label"
 import { useActionState } from "react";
 import { createDocument } from "@/actions";
 import type { Category } from "@prisma/client";
-import FormBtn from "../component/loadingBtn";
+import FormBtn from "../common/loadingBtn";
 
 
 

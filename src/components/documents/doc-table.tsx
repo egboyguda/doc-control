@@ -2,19 +2,15 @@ import { db } from "@/db";
 import { MdEdit, MdDelete } from "react-icons/md";
 import ViewModal from "./view-modal";
 import { deleteDocs } from "@/actions";
-import FormBtn from "../component/loadingBtn";
-export default async function DocsTable() {
-    const doc = await db.document.findMany({
-        take: 5,
-        orderBy: {
-            date: "desc",
-        },
-        include: {
-            category: true,
-        },
-    })
+import FormBtn from "../common/loadingBtn";
+import { DocWithData } from "@/db/queries/docs";
+interface DocsTableProps {
+    fetchData: () => Promise<DocWithData[]>
+}
+export default async function DocsTable({ fetchData }: DocsTableProps) {
+    const docs = await fetchData();
 
-    const renderDoc = doc.map((doc, index) => {
+    const renderDoc = docs.map((doc, index) => {
         const delDoc = deleteDocs.bind(null, doc.id);
         return (
             <tr key={doc.id}>

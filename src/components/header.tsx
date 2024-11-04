@@ -7,10 +7,10 @@ export default function Header() {
 
             </div>
             <div className="flex-none">
-                <SignedOut>
+                <SignedOut >
                     <SignInButton />
                 </SignedOut>
-                <SignedIn>
+                <SignedIn >
                     <UserButton />
                 </SignedIn>
             </div>
