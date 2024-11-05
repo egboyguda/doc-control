@@ -2,6 +2,7 @@
 import Search from "@/components/common/search";
 import DocsTable from "@/components/documents/doc-table";
 import { fetchDocs } from "@/db/queries/docs";
+import { Suspense } from "react";
 
 export default function DocumentPage() {
     return (
@@ -9,7 +10,8 @@ export default function DocumentPage() {
             <h1>Documents</h1>
 
             <div className="w-1/4">
-                <Search />
+                <Suspense> <Search /></Suspense>
+
             </div>
 
             <DocsTable fetchData={fetchDocs} />
